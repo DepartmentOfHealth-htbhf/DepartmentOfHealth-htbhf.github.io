@@ -1,2 +1,10 @@
-# DepartmentOfHealth-htbhf.github.io
-GitHub pages for the Help To Buy Healthy Food project
+# Help To Buy Healthy Foods project status
+
+| Service Name | Status | Reports |
+|--------------|--------|---------|
+| | Click on any status badge below for more info. | |
+| Continuous Delivery pipeline | [![Build Status](https://travis-ci.com/DepartmentOfHealth-htbhf/htbhf-continous-delivery.svg?branch=master)](https://travis-ci.com/DepartmentOfHealth-htbhf/htbhf-continous-delivery) | |
+| htbhf-applicant-web-ui | [![Build Status](https://travis-ci.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui.svg?branch=master)](https://travis-ci.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui) [![Known Vulnerabilities](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui?targetFile=package.json) | [Acceptance Tests](https://departmentofhealth-htbhf.github.io/htbhf-applicant-web-ui/htbhf-applicant-web-ui-test-report.html) |
+| htbhf-eligibility-service | [![Build Status](https://img.shields.io/travis/com/DepartmentOfHealth-htbhf/htbhf-eligibility-service/master.svg)](https://travis-ci.com/DepartmentOfHealth-htbhf/htbhf-eligibility-service) [![Known Vulnerabilities](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-eligibility-service/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-eligibility-service?targetFile=build.gradle) [![Coverage Status](https://img.shields.io/coveralls/github/DepartmentOfHealth-htbhf/htbhf-eligibility-service/master.svg)](https://coveralls.io/github/DepartmentOfHealth-htbhf/htbhf-eligibility-service?branch=master) | [Reports](https://departmentofhealth-htbhf.github.io/htbhf-eligibility-service/) |
+| htbhf-claimant-service | [![Build Status](https://img.shields.io/travis/com/DepartmentOfHealth-htbhf/htbhf-claimant-service/master.svg)](https://travis-ci.com/DepartmentOfHealth-htbhf/htbhf-claimant-service) [![Known Vulnerabilities](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-claimant-service/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-claimant-service?targetFile=build.gradle) [![Coverage Status](https://img.shields.io/coveralls/github/DepartmentOfHealth-htbhf/htbhf-claimant-service/master.svg)](https://coveralls.io/github/DepartmentOfHealth-htbhf/htbhf-claimant-service?branch=master) | [Reports](https://departmentofhealth-htbhf.github.io/htbhf-claimant-service/) |
+
