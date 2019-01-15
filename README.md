@@ -12,3 +12,6 @@
 - [Travis-CI](https://travis-ci.com/DepartmentOfHealth-htbhf/) - Continuous Integration / Continuous Delivery
 - [Snyk.io](https://app.snyk.io/org/departmentofhealth-htbhf/projects/) - Security Vulnerability Assessment
 - [Bintray](https://bintray.com/departmentofhealth-htbhf/maven) - Repository for Java Services
+
+### View the Online Application
+In the [Development](https://help-to-buy-healthy-foods-development.london.cloudapps.digital/) or [Staging](https://help-to-buy-healthy-foods-staging.london.cloudapps.digital/) environments. You will need to provide a username and password.
