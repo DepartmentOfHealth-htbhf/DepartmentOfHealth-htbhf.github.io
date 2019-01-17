@@ -14,7 +14,7 @@
 - [Bintray](https://bintray.com/departmentofhealth-htbhf/maven) - Repository for Java Services
 
 ### View the Prototype
-https://htbhf-prototype.herokuapp.com/ (You will need a username & password)
+[https://htbhf-prototype.herokuapp.com/](https://htbhf-prototype.herokuapp.com/) (You will need a username & password)
 
 ### View the Online Application
 In the [Development](https://help-to-buy-healthy-foods-development.london.cloudapps.digital/) or [Staging](https://help-to-buy-healthy-foods-staging.london.cloudapps.digital/) environments. You will need to provide a username and password.
