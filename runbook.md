@@ -11,11 +11,6 @@ Logs are visible on the Logit.io Kibana dashboard: https://kibana.logit.io/app/k
 It is possible to use the request id or session id to track an individual web request (or the whole session) all the way through the stack.
 Both request and session ids are included in each http response (the X-Vcap-Request-Id header and htbhf.sid cookie, respectively).
 
-#### Configuring log filters
-Our logit filter configuration is available at: https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf,
-and can be updated using the logit.io dashboard: https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885
-(this is not something that needs to be updated until/unless the format of log messages changes).
-
 #### Setting the log level
 Log levels for both the applicant-web-ui and claimant-service can be set using environment variables, 
 controlled via the 'variable-service' user provided service. Use `cf update-user-provided-service` to update these values - new values will take effect on the next deployment.
@@ -46,9 +41,21 @@ You must include each of the values in 'credentials', and change/add the value y
 cf update-user-provided-service variable-service -p '{"GA_TRACKING_ID": "UA-133839203-1", "UI_LOG_LEVEL": "debug", "claimant-app-loglevel": "debug"}'
 ```
 
+#### Configuring log filters
+Our logit filter configuration is available at: https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf,
+and can be updated using the logit.io dashboard: https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885
+(this is not something that needs to be updated until/unless the format of log messages changes).
+
+
 ## Querying the database for Claimants
 See [accessing-paas-databases](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#accessing-paas-databases)
 and [querying-the-db-for-claimants](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#querying-the-db-for-claimants)
 
 ## Restoring the database after a catastrophic failure
 See https://helptobuyhealthyfood.atlassian.net/wiki/spaces/PRBE/pages/44105784/Restoring+the+database+from+a+backup
+
+## Shuttering the site for maintenance ('Service Unavailable')
+To display a 'Service Unavailable' page, see [displaying-a-service-unavailable-page](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#displaying-a-service-unavailable-page)
+
+## Deploying a specific version of an app
+To manually deploy a microservice (bypassing tests in staging), see [deploying-applications-to-staging-and-production](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#deploying-applications-to-staging-and-production)
