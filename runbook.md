@@ -12,8 +12,12 @@ It is possible to use the request id or session id to track an individual web re
 Both request and session ids are included in each http response (the X-Vcap-Request-Id header and htbhf.sid cookie, respectively).
 
 #### Setting the log level
-Log levels for both the applicant-web-ui and claimant-service can be set using environment variables, 
-controlled via the 'variable-service' user provided service. Use `cf update-user-provided-service` to update these values - new values will take effect on the next deployment.
+The simplest way to set log levels is to update them in the `application.yml` file for the relevant application and redeploy.
+However it is possible to update them using environment variables - though the service must be restarted for this to take effect.
+
+#### Setting environment variables
+Environment variables are controlled via the 'variable-service' user provided service - this single service controls environment variables for all apps in the space. 
+Use `cf update-user-provided-service` to update these values - new values will take effect on the next deployment.
 
 Note that any update to a user provided service will replace that service, so you must specify all variables - you can't update just one of them.
 Use `cf env app-name` to view the existing environment variables (where app-name is, for example, htbhf-claimant-service) - you should see output similar to the following:
