@@ -106,3 +106,6 @@ To display a 'Service Unavailable' page, see [displaying-a-service-unavailable-p
 
 ## Deploying a specific version of an app
 To manually deploy a microservice (bypassing tests in staging), see [deploying-applications-to-staging-and-production](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#deploying-applications-to-staging-and-production)
+
+## Database auditing
+Auditing of claims is implemented using the [Javers](https://javers.org/) library. See [database auditing](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#claim-auditing) for more information.
