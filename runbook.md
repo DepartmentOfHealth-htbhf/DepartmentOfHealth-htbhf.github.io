@@ -16,6 +16,9 @@ The simplest way to set log levels is to update them in the `application.yml` fi
 However it is possible to update them using environment variables - though the service must be restarted for this to take effect.
 
 #### Setting environment variables
+<details>
+  <summary>Click to expand</summary>
+
 Environment variables are controlled via the 'variable-service' user provided service - this single service controls environment variables for all apps in the space. 
 Use `cf update-user-provided-service` to update these values - new values will take effect on the next deployment.
 
@@ -44,6 +47,7 @@ You must include each of the values in 'credentials', and change/add the value y
 ```
 cf update-user-provided-service variable-service -p '{"GA_TRACKING_ID": "UA-133839203-1", "UI_LOG_LEVEL": "debug", "claimant-app-loglevel": "debug"}'
 ```
+</details>
 
 #### Configuring log filters
 Our logit filter configuration is available at: https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf,
@@ -52,9 +56,27 @@ and can be updated using the logit.io dashboard: https://logit.io/a/53b8dcc2-aca
 
 
 ## Metrics
-We have not yet set up metrics exporting from the PaaS - for instructions on doing so see: https://docs.cloud.service.gov.uk/monitoring_apps.html#monitoring-apps
+We have set up metrics exporting from the PaaS (following instructions here: [docs.cloud.service.gov.uk/monitoring_apps.html](https://docs.cloud.service.gov.uk/monitoring_apps.html#monitoring-apps))
+Please see the [prometheus repository](https://github.com/DepartmentOfHealth-htbhf/prometheus) for details on the Prometheus app that has been deployed to the PaaS to export metrics.
 
-There is still some monitoring that is possible by installing the [cf log-cache plugin](https://github.com/cloudfoundry/log-cache-cli#installing-plugin).
+These metrics are viewable from a [Grafana dashboard](https://helptobuyhealthyfoods.grafana.net/dashboards) (login required). 
+This includes only the default metrics as provided by the PaaS - there are no application-specific or jvm metrics.
+
+#### Application-specific metrics
+<details>
+  <summary>Click to expand</summary>
+
+Some spring boot apps (such as the claimant service) do expose additional metrics. 
+It is possible to view these metrics from your local machine by running the following command (this example is to view metrics for instance 0 of the claimant service in the staging space):
+```cf ssh -N -T -L 8080:localhost:8080 htbhf-claimant-service-staging -i 0```
+Then open this url in your local browser: http://localhost:8080/actuator/prometheus (see http://localhost:8080/actuator/ for a list of all actuator endpoints).
+You can get metrics for another instance by changing the `-i` parameter :
+```cf ssh -N -T -L 8080:localhost:8080 htbhf-claimant-service-staging -i 1```
+
+You can also run a local instance of Prometheus for easier interpretation of the metrics: https://prometheus.io/docs/prometheus/latest/getting_started/
+
+
+It is also possible to monitor individual applications by installing the [cf log-cache plugin](https://github.com/cloudfoundry/log-cache-cli#installing-plugin).
 
 Having installed the plugin, use the following command to obtain metrics for an individual app (including CPU and memory usage):
 ```bash
@@ -93,6 +115,7 @@ Retrieving logs for app htbhf-claimant-service-staging in org department-of-heal
    2019-03-29T10:01:57.11+0000 [htbhf-claimant-service-staging/1] GAUGE absolute_entitlement:0.000000 nanoseconds absolute_usage:69119660018.000000 nanoseconds container_age:20990298995898.000000 nanoseconds
    2019-03-29T10:02:10.65+0000 [htbhf-claimant-service-staging/0] GAUGE cpu:0.105926 percentage disk:175607808.000000 bytes disk_quota:1073741824.000000 bytes memory:280776704.000000 bytes memory_quota:107374182
 ```
+</details>
 
 ## Querying the database for Claimants
 See [accessing-paas-databases](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#accessing-paas-databases)
