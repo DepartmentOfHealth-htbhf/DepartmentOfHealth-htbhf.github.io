@@ -15,43 +15,9 @@ Both request and session ids are included in each http response (the X-Vcap-Requ
 The simplest way to set log levels is to update them in the `application.yml` file for the relevant application and redeploy.
 However it is possible to update them using environment variables - though the service must be restarted for this to take effect.
 
-#### Setting environment variables
-<details>
-  <summary>Click to expand</summary>
-
-Environment variables are controlled via the 'variable-service' user provided service - this single service controls environment variables for all apps in the space. 
-Use `cf update-user-provided-service` to update these values - new values will take effect on the next deployment.
-
-Note that any update to a user provided service will replace that service, so you must specify all variables - you can't update just one of them.
-Use `cf env app-name` to view the existing environment variables (where app-name is, for example, htbhf-claimant-service) - you should see output similar to the following:
-```
-System-Provided:
-{
- "VCAP_SERVICES": {
-...
-  "user-provided": [
-   {
-    "binding_name": null,
-    "credentials": {
-     "GA_TRACKING_ID": "UA-133839203-1",
-     "UI_LOG_LEVEL": "debug"
-    },
-    "instance_name": "variable-service",
-    "label": "user-provided",
-    "name": "variable-service",
-    ...
-   },
-...
-```
-You must include each of the values in 'credentials', and change/add the value you wish to set, e.g.:
-```
-cf update-user-provided-service variable-service -p '{"GA_TRACKING_ID": "UA-133839203-1", "UI_LOG_LEVEL": "debug", "claimant-app-loglevel": "debug"}'
-```
-</details>
-
 #### Configuring log filters
-Our logit filter configuration is available at: https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf,
-and can be updated using the logit.io dashboard: https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885
+Our logit filter configuration is available at: [https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf),
+and can be updated using the logit.io dashboard: [https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885](https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885)
 (this is not something that needs to be updated until/unless the format of log messages changes).
 
 
@@ -63,8 +29,6 @@ These metrics are viewable from a [Grafana dashboard](https://helptobuyhealthyfo
 This includes only the default metrics as provided by the PaaS - there are no application-specific or jvm metrics.
 
 #### Application-specific metrics
-<details>
-  <summary>Click to expand</summary>
 
 Some spring boot apps (such as the claimant service) do expose additional metrics. 
 It is possible to view these metrics from your local machine by running the following command (this example is to view metrics for instance 0 of the claimant service in the staging space):
@@ -115,7 +79,49 @@ Retrieving logs for app htbhf-claimant-service-staging in org department-of-heal
    2019-03-29T10:01:57.11+0000 [htbhf-claimant-service-staging/1] GAUGE absolute_entitlement:0.000000 nanoseconds absolute_usage:69119660018.000000 nanoseconds container_age:20990298995898.000000 nanoseconds
    2019-03-29T10:02:10.65+0000 [htbhf-claimant-service-staging/0] GAUGE cpu:0.105926 percentage disk:175607808.000000 bytes disk_quota:1073741824.000000 bytes memory:280776704.000000 bytes memory_quota:107374182
 ```
-</details>
+
+
+## Setting environment variables
+
+Environment variables are controlled via user provided services, primarily the `variable-service` - this single service controls the following environment variables for all apps in the space:
+
+* GA_TRACKING_ID
+* DWP_API_URI
+* HMRC_API_URI
+* CARD_SERVICES_API_URI
+* UI_LOG_LEVEL
+* And (optionally) claimant-root-loglevel & claimant-app-loglevel
+
+Use `cf update-user-provided-service` to update these values - new values will take effect on the next deployment.
+
+Note that any update to a user provided service will replace that service, so you must specify all variables - you can't update just one of them.
+Use `cf env app-name` to view the existing environment variables (where app-name is, for example, htbhf-claimant-service) - you should see output similar to the following:
+```
+System-Provided:
+{
+ "VCAP_SERVICES": {
+...
+  "user-provided": [
+   {
+    "binding_name": null,
+    "credentials": {
+     "GA_TRACKING_ID": "UA-133839203-1",
+     "UI_LOG_LEVEL": "debug"
+    },
+    "instance_name": "variable-service",
+    "label": "user-provided",
+    "name": "variable-service",
+    ...
+   },
+...
+```
+You must include each of the values in 'credentials', and change/add the value you wish to set, e.g.:
+```
+cf update-user-provided-service variable-service -p '{"GA_TRACKING_ID": "UA-133839203-1", "UI_LOG_LEVEL": "debug", "claimant-app-loglevel": "debug"}'
+```
+
+Due to this limitation with user provided services, subsequent configuration values have been placed in their own service. 
+For instance the `notify-variable-service` has a single variable 'NOTIFY_API_KEY'.
 
 ## Querying the database for Claimants
 See [accessing-paas-databases](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#accessing-paas-databases)
