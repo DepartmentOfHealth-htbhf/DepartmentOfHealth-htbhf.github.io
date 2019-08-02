@@ -1,5 +1,12 @@
 # Runbook for Help To Buy Healthy Foods
 
+## Continuous Integration and Continuous Delivery
+All projects are built by [travis-ci](https://travis-ci.com/DepartmentOfHealth-htbhf/) - this is governed by the `.travis.yml` file in each project.
+Generally each project runs a `ci_deploy.sh` script after a successful build to deploy the latest build to development.
+This downloads and runs the code in [htbhf-deployment-scripts](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts) to perform a blue-green deployment and run smoke tests.
+Assuming these pass `.travis.yml` will create a new release and invoke an `after-success` step to trigger the [CD pipeline](https://github.com/DepartmentOfHealth-htbhf/htbhf-continous-delivery)
+to deploy to staging (including running integration, compatibility and performance tests) and production.
+
 
 ## Logs
 We use Logit to make application logs accessible, as recommended here: https://docs.publishing.service.gov.uk/manual/logit.html
@@ -80,7 +87,6 @@ Retrieving logs for app htbhf-claimant-service-staging in org department-of-heal
    2019-03-29T10:02:10.65+0000 [htbhf-claimant-service-staging/0] GAUGE cpu:0.105926 percentage disk:175607808.000000 bytes disk_quota:1073741824.000000 bytes memory:280776704.000000 bytes memory_quota:107374182
 ```
 
-
 ## Setting environment variables
 
 Environment variables are controlled via user provided services, primarily the `variable-service` - this single service controls the following environment variables for all apps in the space:
@@ -123,18 +129,24 @@ cf update-user-provided-service variable-service -p '{"GA_TRACKING_ID": "UA-1338
 Due to this limitation with user provided services, subsequent configuration values have been placed in their own service. 
 For instance the `notify-variable-service` has a single variable 'NOTIFY_API_KEY'.
 
+## Configuring the number & size of instances
+Instance sizes are controlled by a single variable - the amount of memory assigned to the instance. This also governs the number of CPU cycles available to the instance.
+This is generally configured in the manifest.yml file in each project, but can be overridden in staging and production - along with the number of instances in those environments.
+These can be controlled by editing [instance-sizes-staging.properties](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/instance-sizes-staging.properties)
+and [instance-sizes-production.properties](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/instance-sizes-production.properties) respectively.
+
+## Deploying a specific version of an app
+To manually deploy a microservice (bypassing tests in staging), see [deploying-applications-to-staging-and-production](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#deploying-applications-to-staging-and-production)
+
+## Shuttering the site for maintenance ('Service Unavailable')
+To display a 'Service Unavailable' page, see [displaying-a-service-unavailable-page](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#displaying-a-service-unavailable-page)
+
 ## Querying the database for Claimants
 See [accessing-paas-databases](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#accessing-paas-databases)
 and [querying-the-db-for-claimants](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#querying-the-db-for-claimants)
 
 ## Restoring the database after a catastrophic failure
 See https://helptobuyhealthyfood.atlassian.net/wiki/spaces/PRBE/pages/44105784/Restoring+the+database+from+a+backup
-
-## Shuttering the site for maintenance ('Service Unavailable')
-To display a 'Service Unavailable' page, see [displaying-a-service-unavailable-page](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#displaying-a-service-unavailable-page)
-
-## Deploying a specific version of an app
-To manually deploy a microservice (bypassing tests in staging), see [deploying-applications-to-staging-and-production](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/tree/master/management-scripts#deploying-applications-to-staging-and-production)
 
 ## Database auditing
 Auditing of claims is implemented using the [Javers](https://javers.org/) library. See [database auditing](https://github.com/DepartmentOfHealth-htbhf/htbhf-claimant-service/tree/master/db#claim-auditing) for more information.
