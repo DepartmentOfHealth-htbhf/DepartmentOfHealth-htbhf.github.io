@@ -1,4 +1,4 @@
-# Runbook for Help To Buy Healthy Foods
+# Runbook for Apply for Healthy Start
 
 ## Continuous Integration and Continuous Delivery
 All projects are built by [travis-ci](https://travis-ci.com/DepartmentOfHealth-htbhf/) - this is governed by the `.travis.yml` file in each project.
@@ -32,12 +32,12 @@ and can be updated using the logit.io dashboard: [https://logit.io/a/53b8dcc2-ac
 We have set up metrics exporting from the PaaS (following instructions here: [docs.cloud.service.gov.uk/monitoring_apps.html](https://docs.cloud.service.gov.uk/monitoring_apps.html#monitoring-apps))
 Please see the [prometheus repository](https://github.com/DepartmentOfHealth-htbhf/prometheus) for details on the Prometheus app that has been deployed to the PaaS to export metrics.
 
-These metrics are viewable from a [Grafana dashboard](https://helptobuyhealthyfoods.grafana.net/dashboards) (login required). 
+These metrics are viewable from a [Grafana dashboard](https://helptobuyhealthyfoods.grafana.net/dashboards) (login required).
 This includes only the default metrics as provided by the PaaS - there are no application-specific or jvm metrics.
 
 #### Application-specific metrics
 
-Some spring boot apps (such as the claimant service) do expose additional metrics. 
+Some spring boot apps (such as the claimant service) do expose additional metrics.
 It is possible to view these metrics from your local machine by running the following command (this example is to view metrics for instance 0 of the claimant service in the staging space):
 ```cf ssh -N -T -L 8080:localhost:8080 htbhf-claimant-service-staging -i 0```
 Then open this url in your local browser: http://localhost:8080/actuator/prometheus (see http://localhost:8080/actuator/ for a list of all actuator endpoints).
@@ -126,7 +126,7 @@ You must include each of the values in 'credentials', and change/add the value y
 cf update-user-provided-service variable-service -p '{"GA_TRACKING_ID": "UA-133839203-1", "UI_LOG_LEVEL": "debug", "claimant-app-loglevel": "debug"}'
 ```
 
-Due to this limitation with user provided services, subsequent configuration values have been placed in their own service. 
+Due to this limitation with user provided services, subsequent configuration values have been placed in their own service.
 For instance the `notify-variable-service` has a single variable 'NOTIFY_API_KEY'.
 
 ## Configuring the number & size of instances

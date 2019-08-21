@@ -1,4 +1,4 @@
-# Help To Buy Healthy Foods project status
+# Apply for Healthy Start project status
 
 | Service | Status | Reports |
 |---------|--------|---------|
@@ -21,7 +21,7 @@
 [https://htbhf-prototype.herokuapp.com/](https://htbhf-prototype.herokuapp.com/) (You will need a username & password)
 
 ### View the Online Application
-In the [Development](https://help-to-buy-healthy-foods-development.london.cloudapps.digital/) or [Staging](https://help-to-buy-healthy-foods-staging.london.cloudapps.digital/) environments. You will need to provide a username and password.
+In the [Development](https://apply-for-healthy-start-development.london.cloudapps.digital/) or [Staging](https://apply-for-healthy-start-staging.london.cloudapps.digital/) environments. You will need to provide a username and password.
 
 ### [Runbook](runbook.md)
 
