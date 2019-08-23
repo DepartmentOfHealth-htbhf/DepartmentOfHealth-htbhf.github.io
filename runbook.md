@@ -1,10 +1,10 @@
 # Runbook for Apply for Healthy Start
 
 ## Continuous Integration and Continuous Delivery
-All projects are built by [travis-ci](https://travis-ci.com/DepartmentOfHealth-htbhf/) - this is governed by the `.travis.yml` file in each project.
+All projects are built by [CircleCI](https://circleci.com/gh/DepartmentOfHealth-htbhf/) - this is governed by the `.circleci/config.yml` file in each project.
 Generally each project runs a `ci_deploy.sh` script after a successful build to deploy the latest build to development.
 This downloads and runs the code in [htbhf-deployment-scripts](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts) to perform a blue-green deployment and run smoke tests.
-Assuming these pass `.travis.yml` will create a new release and invoke an `after-success` step to trigger the [CD pipeline](https://github.com/DepartmentOfHealth-htbhf/htbhf-continous-delivery)
+Assuming these pass `.circleci/config.yml` will create a new release and invoke a `deploy` step to trigger the [CD pipeline](https://github.com/DepartmentOfHealth-htbhf/htbhf-continous-delivery)
 to deploy to staging (including running integration, compatibility and performance tests) and production.
 
 
