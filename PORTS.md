@@ -13,3 +13,4 @@ CloudFoundry will automatically map the port to 8080 so no additional config is 
 | htbhf-smart-stub            | 8120 |
 | htbhf-hmrc-api              | 8130 |
 | htbhf-card-services-api     | 8140 |
+| htbhf-os-places-stub        | 8150 |
