@@ -13,7 +13,7 @@
 | htbhf-java-common | [![Build Status](https://htbhf-circleci-status.london.cloudapps.digital/htbhf-java-common)](https://circleci.com/gh/DepartmentOfHealth-htbhf/htbhf-java-common/tree/master) | [![Known Vulnerabilities](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-java-common/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/DepartmentOfHealth-htbhf/htbhf-java-common?targetFile=build.gradle) [![Total alerts](https://img.shields.io/lgtm/alerts/g/DepartmentOfHealth-htbhf/htbhf-java-common.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DepartmentOfHealth-htbhf/htbhf-java-common/alerts/) <br> [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/DepartmentOfHealth-htbhf/htbhf-java-common.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DepartmentOfHealth-htbhf/htbhf-java-common/context:java) [![Coverage Status](https://codecov.io/gh/DepartmentOfHealth-htbhf/htbhf-java-common/branch/master/graph/badge.svg)](https://codecov.io/gh/DepartmentOfHealth-htbhf/htbhf-java-common) | [Java Common](https://departmentofhealth-htbhf.github.io/htbhf-java-common/) |
 
 ### Other Dashboards
-- [CircleCI](https://circleci.com/gh/DepartmentOfHealth-htbhf//tree/master) - Continuous Integration / Continuous Delivery
+- [CircleCI](https://circleci.com/gh/DepartmentOfHealth-htbhf/) - Continuous Integration / Continuous Delivery
 - [Snyk.io](https://app.snyk.io/org/departmentofhealth-htbhf/projects/) - Security Vulnerability Assessment
 - [Bintray](https://bintray.com/departmentofhealth-htbhf/maven) - Repository for Java Services
 - [CD build history](https://github.com/DepartmentOfHealth-htbhf/htbhf-continous-delivery/commits/gh-pages) - Report history for every CD build
@@ -23,7 +23,9 @@
 [https://htbhf-prototype.herokuapp.com/](https://htbhf-prototype.herokuapp.com/) (You will need a username & password)
 
 ### View the Online Application
-In the [Development](https://apply-for-healthy-start-development.london.cloudapps.digital/) or [Staging](https://apply-for-healthy-start-staging.london.cloudapps.digital/) environments. You will need to provide a username and password.
+In the [Development](https://apply-for-healthy-start-development.london.cloudapps.digital/) 
+or [Staging](https://apply-for-healthy-start-staging.london.cloudapps.digital/) environments. 
+You will need to provide a username and password.
 
 ### [Runbook](runbook.md)
 
