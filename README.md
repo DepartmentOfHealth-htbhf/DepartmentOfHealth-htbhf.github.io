@@ -30,3 +30,7 @@ You will need to provide a username and password.
 ### [Runbook](runbook.md)
 
 ### [Local development](local_development.md)
+
+### Nightly builds
+Nightly builds are run on CircleCI, triggered by [cron-job.org](https://cron-job.org/en/members/jobs/edit/?jobid=2823389)
+(login details are in web-accounts.yml)
