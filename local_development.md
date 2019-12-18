@@ -6,6 +6,8 @@ CloudFoundry will automatically map the port to 8080 so no additional config is 
 These are the applications you need to check out and run locally for the full end-to-end service.
 All applications can be found here: https://github.com/DepartmentOfHealth-htbhf/
 
+Applications may require additional services - both Postgres and Redis must be running locally.
+
 | Service                                                     | Port | Command(s)                                                                                                                                                    |
 | :--------------------------                                 | :--- | :----------                                                                                                                                                   |
 | htbhf-applicant-web-ui                                      | 8080 | `export NOTIFY_API_KEY={the notify api key}`<br>`export GOOGLE_ANALYTICS_TRACKING_ID=test-key`<br>(or better, populate these in a `.env` file)<br>`npm start` |
