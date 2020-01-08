@@ -22,3 +22,4 @@ Applications may require additional services - both Postgres and Redis must be r
 
 
 See also [run_all_linux.sh](run_all_linux.sh) for an example script to start all the applications on a linux machine.
+See also [run_all_mac.sh](run_all_mac.sh) for an example script to start all the applications on a Mac machine.
