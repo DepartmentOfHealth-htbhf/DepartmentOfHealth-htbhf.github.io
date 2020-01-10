@@ -9,10 +9,10 @@ to deploy to staging (including running integration, compatibility and performan
 
 
 ## Logs
-We use Logit to make application logs accessible, as recommended here: https://docs.publishing.service.gov.uk/manual/logit.html
+We use Logit to make application logs accessible, as recommended here: [https://docs.publishing.service.gov.uk/manual/logit.html](https://docs.publishing.service.gov.uk/manual/logit.html)
 
 #### Viewing the logs
-Logs are visible on the Logit.io Kibana dashboard: https://kibana.logit.io/app/kibana
+Logs are visible on the Logit.io [Kibana dashboard](https://kibana.logit.io/app/kibana)
 (Note that you must have been granted access).
 
 It is possible to use the request id or session id to track an individual web request (or the whole session) all the way through the stack.
@@ -24,7 +24,7 @@ However it is possible to update them using environment variables - though the s
 
 #### Configuring log filters
 Our logit filter configuration is available at: [https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf](https://github.com/DepartmentOfHealth-htbhf/htbhf-deployment-scripts/blob/master/examples/logstash.conf),
-and can be updated using the logit.io dashboard: [https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885](https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885)
+and can be updated using the [logit.io dashboard](https://logit.io/a/53b8dcc2-acae-42c6-b2a9-93a0e15e0885)
 (this is not something that needs to be updated until/unless the format of log messages changes).
 
 
